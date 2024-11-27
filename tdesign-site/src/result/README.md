@@ -8,15 +8,15 @@ isComponent: true
 <span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-83%25-blue" /></span>
 ## 引入
 
-在tdesign_flutter/tdesign_flutter.dart中有所有组件的路径。
+在gmdesign_flutter/gmdesign_flutter.dart中有所有组件的路径。
 
 ```dart
-import 'package:tdesign_flutter/tdesign_flutter.dart';
+import 'package:gmdesign_flutter/gmdesign_flutter.dart';
 ```
 
 ## 代码演示
 
-[gm_result_page.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/gm_result_page.dart)
+[gm_result_page.dart](https://github.com/Tencent/tdesign-flutter/blob/main/gmdesign-component/example/lib/page/gm_result_page.dart)
 
 ### 1 组件类型
 

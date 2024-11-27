@@ -7,7 +7,7 @@ spline: explain
 ## 项目地址
 [TDesign-Flutter](https://github.com/Tencent/tdesign-flutter)
 
-组件项目：tdesign-component
+组件项目：gmdesign-component
 
 官网项目：tdesign-site
 

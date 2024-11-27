@@ -5,7 +5,7 @@ on:
     branches: [develop]
     types: [opened, synchronize, reopened, closed]
     paths:
-      - "tdesign-component/pubspec.yaml"
+      - "gmdesign-component/pubspec.yaml"
   issue_comment:
     types: [edited]
 
@@ -23,7 +23,7 @@ jobs:
         id: tag-action
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          version_file: ./tdesign-component/pubspec.yaml
+          version_file: ./gmdesign-component/pubspec.yaml
       - uses: TDesignOteam/tdesign-changelog-action@main
         id: changelog
         env:
@@ -87,7 +87,7 @@ jobs:
         id: tag-action
         with:
           token: ${{ secrets.GITHUB_TOKEN }}  
-          version_file: ./tdesign-component/pubspec.yaml  
+          version_file: ./gmdesign-component/pubspec.yaml  
       - name: tag and push if needed
         run: |
           echo "${{ steps.tag-action.outputs.version }}"

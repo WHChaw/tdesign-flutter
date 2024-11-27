@@ -10,7 +10,7 @@ Android请扫码下载预览 ↓
 <br/>
 iOS请运行项目预览 ↓
 <br/>
-https://github.com/Tencent/tdesign-flutter/tree/main/tdesign-component
+https://github.com/Tencent/tdesign-flutter/tree/main/gmdesign-component
 
 ## 使用组件
 
@@ -18,14 +18,14 @@ https://github.com/Tencent/tdesign-flutter/tree/main/tdesign-component
 
 ```yaml
   dependencies:
-    tdesign_flutter: ^0.1.0
+    gmdesign_flutter: ^0.1.0
 ```
 
 
 ### 引入组件代码
 
 ```dart
-import 'package:tdesign_flutter/tdesign_flutter.dart';
+import 'package:gmdesign_flutter/gmdesign_flutter.dart';
 ```
 
 ## 本地运行官网示例代码
@@ -39,4 +39,4 @@ import 'package:tdesign_flutter/tdesign_flutter.dart';
 
 ## 开源协议
 
-TDesign 遵循 [MIT 协议](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/LICENSE)。
+TDesign 遵循 [MIT 协议](https://github.com/Tencent/tdesign-flutter/blob/main/gmdesign-component/LICENSE)。

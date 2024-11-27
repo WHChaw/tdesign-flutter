@@ -269,7 +269,7 @@ docClass: timeline
 
 ## 0.0.2
 
-* 更新ReadMe,修改引入文件为'tdesign_flutter.dart'
+* 更新ReadMe,修改引入文件为'gmdesign_flutter.dart'
 
 ## 0.0.1
 

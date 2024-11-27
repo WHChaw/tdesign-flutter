@@ -14,16 +14,16 @@ Android请扫码下载预览 ↓
 <br/>
 iOS请运行项目预览 ↓
 <br/>
-[https://github.com/Tencent/tdesign-flutter/tree/main/tdesign-component](https://github.com/Tencent/tdesign-flutter/tree/main/tdesign-component)
+[https://github.com/Tencent/tdesign-flutter/tree/main/gmdesign-component](https://github.com/Tencent/tdesign-flutter/tree/main/gmdesign-component)
 
 ## 使用方法
 - 在pubbspec.yaml引入依赖。
 ```yaml
   dependencies:
-    tdesign_flutter: ^0.1.0
+    gmdesign_flutter: ^0.1.0
 ```
     
-- 在文件头部引入：`import 'package:tdesign_flutter/tdesign_flutter.dart'; // 组件库相关的，只需要引入这个文件，里面暴露td前缀所有需要的类`
+- 在文件头部引入：`import 'package:gmdesign_flutter/gmdesign_flutter.dart'; // 组件库相关的，只需要引入这个文件，里面暴露td前缀所有需要的类`
 - 可通过json文件配置颜色/字体尺寸/字体样式/圆角/阴影等主题样式。通过`TDTheme.of(context)或者TDTheme.defaultData()`获取主题数据。建议组件都使用`TDTheme.of(context)`的，不需要跟随局部主题的组件，才可以使用`TDTheme.defaultData()`。
     
     颜色，字体，圆角等使用示例：
@@ -79,7 +79,7 @@ iOS请运行项目预览 ↓
 
 ![img.png](/flutter/assets/select_color.png)
 
-2.此时你得到是一个theme.css文件,可以将该文件放到tdesign-component/example/shell/theme/文件夹下,把该文件夹下的css2JsonTheme.dart修改为你自己的文件名、主题名和输出路径,即可得到一个theme.json文件
+2.此时你得到是一个theme.css文件,可以将该文件放到gmdesign-component/example/shell/theme/文件夹下,把该文件夹下的css2JsonTheme.dart修改为你自己的文件名、主题名和输出路径,即可得到一个theme.json文件
 ![img.png](/flutter/assets/dart_modify.png)
 
 3.将主题json加载进TDTheme,美观的自定义主题就设置完成了.
