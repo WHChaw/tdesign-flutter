@@ -7,7 +7,7 @@
 import 'dart:ui';
 
 /// 宽高屏幕自动适配，使用举例：100.as
-extension TDIntScale on int {
+extension GMIntScale on int {
   double get scale {
     /// 屏幕的逻辑宽度=屏幕物理宽度/屏幕的像素倍数
     var screenWidth =  window.physicalSize.width/window.devicePixelRatio;
@@ -16,7 +16,7 @@ extension TDIntScale on int {
   }
 }
 
-extension TDDoubleScale on double {
+extension GMDoubleScale on double {
   double get scale {
     /// 屏幕的逻辑宽度=屏幕物理宽度/屏幕的像素倍数
     var screenWidth =  window.physicalSize.width/window.devicePixelRatio;

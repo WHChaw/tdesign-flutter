@@ -48,7 +48,7 @@
       ……
     )
 ```
-自定义主题属性,常用可设置属性键值请参考[td_default_theme.dart](lib/src/theme/td_default_theme.dart):
+自定义主题属性,常用可设置属性键值请参考[gm_default_theme.dart](lib/src/theme/gm_default_theme.dart):
 ```
     String testThemeConfig = '''
       {

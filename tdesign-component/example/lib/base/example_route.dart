@@ -6,7 +6,7 @@ import 'api_widget.dart';
 import 'example_base.dart';
 import 'example_widget.dart';
 
-class TDExampleRoute {
+class GMExampleRoute {
   static final Map<String, ExamplePageModel> pageModelList = {};
   static const String aboutPath = 'about';
   static const String apiPath = 'api';

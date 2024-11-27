@@ -4,5 +4,5 @@ import '../theme/resource_delegate.dart';
 
 /// Context的扩展,方便使用
 extension ContextExtension on BuildContext {
-  TDResourceDelegate get resource => TDResourceManager.instance.delegate(this);
+  GMResourceDelegate get resource => GMResourceManager.instance.delegate(this);
 }

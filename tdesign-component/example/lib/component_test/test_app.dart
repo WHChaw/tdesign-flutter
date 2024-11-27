@@ -10,15 +10,15 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var jsonString = await rootBundle.loadString('assets/theme.json');
   print('jsonString:$jsonString');
-  TDTheme.needMultiTheme(true);
-  TDTheme.defaultData();
-  var themeData = TDThemeData.fromJson('green', jsonString);
-  await TDFontLoader.load(
+  GMTheme.needMultiTheme(true);
+  GMTheme.defaultData();
+  var themeData = GMThemeData.fromJson('green', jsonString);
+  await GMFontLoader.load(
       name: 'test1',
       fontFamilyUrl:
           'https://xinyue.qq.com/m/flutter_web/assets/packages/flutter_component/fonts/FZLanTingHeiS-EB-GB.ttf');
   runApp(MaterialApp(
-    home: TDTextConfiguration(
+    home: GMTextConfiguration(
       globalFontFamily: FontFamily(
         fontFamily: 'test1',
       ),
@@ -48,36 +48,36 @@ Padding body(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
 
-                    TDButton(text: "ixanshi ",onTap: (){
-                      TDLoadingController.show(context);
+                    GMButton(text: "ixanshi ",onTap: (){
+                      GMLoadingController.show(context);
 
-                      TDLoadingController.dismiss();
+                      GMLoadingController.dismiss();
                     },),
                     // 先显示再加载
-                    TDText(
+                    GMText(
                       '测试文案',
-                      textColor: TDTheme.of(context).brandNormalColor,
+                      textColor: GMTheme.of(context).brandNormalColor,
                       fontFamilyUrl:
                           'https://xinyue.qq.com/m/flutter_web/assets/packages/flutter_component/fonts/FZLanTingHeiS-EB-GB.ttf',
                       fontFamily: FontFamily(fontFamily: 'test'),
                     ),
                     //  // 先加载再显示
                     // child: FutureBuilder(
-                    //     future:TDFontLoader.load(name: 'test1', fontFamilyUrl: 'https://xinyue.qq.com/m/flutter_web/assets/packages/flutter_component/fonts/FZLanTingHeiS-EB-GB.ttf'),
+                    //     future:GMFontLoader.load(name: 'test1', fontFamilyUrl: 'https://xinyue.qq.com/m/flutter_web/assets/packages/flutter_component/fonts/FZLanTingHeiS-EB-GB.ttf'),
                     //   initialData: false,
-                    //   builder: (_,data)=>TDText(
+                    //   builder: (_,data)=>GMText(
                     //     (data.data ?? false) ? '测试文案' : '',
-                    //     textColor: TDTheme.of(context).brandNormalColor,
+                    //     textColor: GMTheme.of(context).brandNormalColor,
                     //     fontFamilyUrl: 'https://xinyue.qq.com/m/flutter_web/assets/packages/flutter_component/fonts/FZLanTingHeiS-EB-GB.ttf',
                     //     fontFamily: FontFamily(fontFamily: 'test1'),
                     //   ),
                     // ),
-                    TDInput(
+                    GMInput(
                       // leftLabel: '标签文字',
                       // controller: controller[0],
-                      type: TDInputType.cardStyle,
+                      type: GMInputType.cardStyle,
                       backgroundColor: Colors.white,
-                      cardStyle: TDCardStyle.topTextWithBlueBorder,
+                      cardStyle: GMCardStyle.topTextWithBlueBorder,
                       hintText: '请输入文字',
                       cardStyleTopText: '标签文字',
                       // onChanged: (text) {
@@ -91,7 +91,7 @@ Padding body(BuildContext context) {
                     const SizedBox(
                       height: 16,
                     ),
-                    const TDTextarea(
+                    const GMTextarea(
                       label: '标签文字',
                       hintText: '请输入文字',
                       maxLines: 4,
@@ -101,7 +101,7 @@ Padding body(BuildContext context) {
                       indicator: true,
                       // backgroundColor: Colors.white,
                       // textInputBackgroundColor: Colors.white,
-                      layout: TDTextareaLayout.vertical,
+                      layout: GMTextareaLayout.vertical,
                       bordered: true,
                     )
                   ],
@@ -110,7 +110,7 @@ Padding body(BuildContext context) {
 }
 
 PreferredSizeWidget _buildAppBar(BuildContext context) {
-  return TDNavBar(
+  return GMNavBar(
       useDefaultBack: false,
       // screenAdaptation: false,
       flexibleSpace: Container(
@@ -126,36 +126,36 @@ PreferredSizeWidget _buildAppBar(BuildContext context) {
       backgroundColor: Colors.red,
       centerTitle: false,
       titleMargin: 0,
-      titleWidget: TDSearchBar(
+      titleWidget: GMSearchBar(
         needCancel: false,
         autoHeight: true,
         backgroundColor: Colors.transparent,
         padding: const EdgeInsets.fromLTRB(0, 2, 0, 2),
         placeHolder: '搜索预设文案',
         mediumStyle: true,
-        style: TDSearchStyle.round,
+        style: GMSearchStyle.round,
         onTextChanged: (String text) {
           print('input：$text');
         },
       ),
       rightBarItems: [
-        TDNavBarItem(icon: TDIcons.home, iconSize: 24),
-        TDNavBarItem(icon: TDIcons.ellipsis, iconSize: 24)
+        GMNavBarItem(icon: GMIcons.home, iconSize: 24),
+        GMNavBarItem(icon: GMIcons.ellipsis, iconSize: 24)
       ]);
 }
 
-TDBottomTabBar _buildBottomTabBar() {
+GMBottomTabBar _buildBottomTabBar() {
   var iconSize = 39 * 60 / 98;
   var textSize = 8.0;
-  return TDBottomTabBar(
-    TDBottomTabBarBasicType.iconText,
-    componentType: TDBottomTabBarComponentType.normal,
+  return GMBottomTabBar(
+    GMBottomTabBarBasicType.iconText,
+    componentType: GMBottomTabBarComponentType.normal,
     useVerticalDivider: false,
     barHeight: 98 * 60 / 98,
     navigationTabs: [
-      TDBottomTabBarTabConfig(
-        selectedIcon: Icon(TDIcons.home, size: iconSize, color: Colors.red),
-        unselectedIcon: Icon(TDIcons.home, size: iconSize, color: const Color(0xFF383838)),
+      GMBottomTabBarTabConfig(
+        selectedIcon: Icon(GMIcons.home, size: iconSize, color: Colors.red),
+        unselectedIcon: Icon(GMIcons.home, size: iconSize, color: const Color(0xFF383838)),
         tabText: '首页',
         selectTabTextStyle: TextStyle(fontSize: textSize, color: Colors.red),
         unselectTabTextStyle: TextStyle(fontSize: textSize, color: Colors.black),
@@ -163,9 +163,9 @@ TDBottomTabBar _buildBottomTabBar() {
           // context.read<CurrentIndexProvider>().changeIndex(0);
         },
       ),
-      TDBottomTabBarTabConfig(
-        selectedIcon: Icon(TDIcons.app, size: iconSize, color: Colors.red),
-        unselectedIcon: Icon(TDIcons.app, size: iconSize, color: const Color(0xFF383838)),
+      GMBottomTabBarTabConfig(
+        selectedIcon: Icon(GMIcons.app, size: iconSize, color: Colors.red),
+        unselectedIcon: Icon(GMIcons.app, size: iconSize, color: const Color(0xFF383838)),
         tabText: '办事',
         selectTabTextStyle: TextStyle(fontSize: textSize, color: Colors.red),
         unselectTabTextStyle: TextStyle(fontSize: textSize, color: Colors.black),
@@ -173,9 +173,9 @@ TDBottomTabBar _buildBottomTabBar() {
           // context.read<CurrentIndexProvider>().changeIndex(1);
         },
       ),
-      TDBottomTabBarTabConfig(
-        selectedIcon: Icon(TDIcons.user, size: iconSize, color: Colors.red),
-        unselectedIcon: Icon(TDIcons.user, size: iconSize, color: Color(0xFF383838)),
+      GMBottomTabBarTabConfig(
+        selectedIcon: Icon(GMIcons.user, size: iconSize, color: Colors.red),
+        unselectedIcon: Icon(GMIcons.user, size: iconSize, color: Color(0xFF383838)),
         tabText: '我的',
         selectTabTextStyle: TextStyle(fontSize: textSize, color: Colors.red),
         unselectTabTextStyle: TextStyle(fontSize: textSize, color: Colors.black),

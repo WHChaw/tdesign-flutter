@@ -67,7 +67,7 @@ class _WebMainBodyState extends State<WebMainBody> {
     return Column(
       children: [
         Expanded(child: Container(
-          color: TDTheme.of().grayColor2,
+          color: GMTheme.of().grayColor2,
           child: Stack(
             children: [
 
@@ -77,11 +77,11 @@ class _WebMainBodyState extends State<WebMainBody> {
                 children: [
                   Container(
                     width: menuWidth,
-                    color: TDTheme.of(context).brandColor1,
+                    color: GMTheme.of(context).brandColor1,
                     child: _buildMenu(),
                   ),
                   Expanded(child: Container(
-                    color: TDTheme.of(context).whiteColor1,
+                    color: GMTheme.of(context).whiteColor1,
                     alignment: Alignment.topLeft,
                     padding: const EdgeInsets.only(left: 32,top: 32),
                     child: DetailLayout(apiPath: apiPath, codePath: codePath,),
@@ -89,7 +89,7 @@ class _WebMainBodyState extends State<WebMainBody> {
 
                   Container(
                     margin: const EdgeInsets.only(left:32, top: 32,right: 32),
-                    child: MobileWidget(page: mobilePath ?? 'TDTextPage',),
+                    child: MobileWidget(page: mobilePath ?? 'GMTextPage',),
                   )
                 ],
               ),
@@ -101,9 +101,9 @@ class _WebMainBodyState extends State<WebMainBody> {
         // 通底
         Container(
           height: 50,
-          color: TDTheme.of(context).brandColor2,
+          color: GMTheme.of(context).brandColor2,
           alignment: Alignment.center,
-          child: TDText('版本号：$version', textColor: TDTheme.of(context).fontGyColor1,),
+          child: GMText('版本号：$version', textColor: GMTheme.of(context).fontGyColor1,),
         )
       ],
     );
@@ -117,8 +117,8 @@ class _WebMainBodyState extends State<WebMainBody> {
           height: 75,
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 16),
-          color: TDTheme.of(context).brandHoverColor,
-          child: TDText('TDesign 组件', textColor: TDTheme.of(context).whiteColor1,font: TDTheme.of(context).fontHeadlineLarge,),
+          color: GMTheme.of(context).brandHoverColor,
+          child: GMText('TDesign 组件', textColor: GMTheme.of(context).whiteColor1,font: GMTheme.of(context).fontHeadlineLarge,),
         ) ,
         Expanded(child: ListView.builder(
             itemCount: examplePageList.length,
@@ -130,7 +130,7 @@ class _WebMainBodyState extends State<WebMainBody> {
                     left: 16, right: 16, top: 8, bottom: 8),
                 alignment: Alignment.topLeft,
                 decoration: BoxDecoration(
-                    border: Border(bottom: BorderSide(color: TDTheme
+                    border: Border(bottom: BorderSide(color: GMTheme
                         .of(context)
                         .grayColor4, width: 0.5))),
                 child: GestureDetector(
@@ -141,8 +141,8 @@ class _WebMainBodyState extends State<WebMainBody> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TDText(model.text),
-                        Icon(TDIcons.chevron_right, color: TDTheme
+                        GMText(model.text),
+                        Icon(GMIcons.chevron_right, color: GMTheme
                             .of(context)
                             .brandHoverColor,)
                       ],
@@ -165,9 +165,9 @@ class WebHome extends StatelessWidget {
   Widget build(BuildContext context) {
     navigator = Navigator.of(context);
     return Container(
-      color: TDTheme.of(context).whiteColor1,
+      color: GMTheme.of(context).whiteColor1,
       alignment: Alignment.center,
-      child: const TDText('Hello World'),
+      child: const GMText('Hello World'),
     );
   }
 }
@@ -198,14 +198,14 @@ class _DetailLayoutState extends State<DetailLayout> with TickerProviderStateMix
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TDTabBar(
+        GMTabBar(
           tabs: _getTabs(),
           controller: _tabController,
           backgroundColor: Colors.white,
           showIndicator: true,
           isScrollable: true,
         ),
-        Expanded(child: TDTabBarView(
+        Expanded(child: GMTabBarView(
           children: _getTabViews(),
           controller: _tabController,
         ))
@@ -213,10 +213,10 @@ class _DetailLayoutState extends State<DetailLayout> with TickerProviderStateMix
     );
   }
 
-  List<TDTab> _getTabs() {
+  List<GMTab> _getTabs() {
     var tabs = const [
-      TDTab(text: 'Api'),
-      TDTab(text: 'Code'),
+      GMTab(text: 'Api'),
+      GMTab(text: 'Code'),
     ];
     return tabs;
   }

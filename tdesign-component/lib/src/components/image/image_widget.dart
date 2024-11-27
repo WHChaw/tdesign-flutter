@@ -336,23 +336,23 @@ class _StateImageWidget extends State<ImageWidget> {
     if (error == false && loading == true) {
       return Container(
           alignment: widget.alignment,
-          color: widget.color ?? TDTheme.of(context).grayColor2,
+          color: widget.color ?? GMTheme.of(context).grayColor2,
           child: widget.loadingWidget ??
               Icon(
-                TDIcons.ellipsis,
+                GMIcons.ellipsis,
                 size: 22,
-                color: TDTheme.of(context).fontGyColor3,
+                color: GMTheme.of(context).fontGyColor3,
               ));
     }
     if (error == true && loading == false) {
       return Container(
         alignment: widget.alignment,
-        color: widget.color ?? TDTheme.of(context).grayColor2,
+        color: widget.color ?? GMTheme.of(context).grayColor2,
         child: widget.errorWidget ??
             Icon(
-              TDIcons.close,
+              GMIcons.close,
               size: 22,
-              color: TDTheme.of(context).fontGyColor3,
+              color: GMTheme.of(context).fontGyColor3,
             ),
       );
     }

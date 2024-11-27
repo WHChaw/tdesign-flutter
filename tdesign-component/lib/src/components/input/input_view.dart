@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TDInputView extends StatelessWidget {
+class GMInputView extends StatelessWidget {
   /// 是否只读
   final bool readOnly;
 
@@ -73,7 +73,7 @@ class TDInputView extends StatelessWidget {
   /// 点击输入框外部区域回调
   final TapRegionCallback? onTapOutside;
 
-  const TDInputView(
+  const GMInputView(
       {Key? key,
       required this.textStyle,
       this.readOnly = false,

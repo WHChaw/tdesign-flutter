@@ -43,7 +43,7 @@ dart tools/smart_cli/bin/main.dart generate
 1、初始化一个组件文件中的一个组件示例，没有--folder-name的时候，默认文件夹名称是第一个name的下划线表示，示例：
 
 ```
-./demo_tool/bin/demo_tool generate --file lib/src/components/tags/td_tag.dart --name TDTag --folder-name tag --only-api
+./demo_tool/bin/demo_tool generate --file lib/src/components/tags/gm_tag.dart --name TDTag --folder-name tag --only-api
 ```
 
 2、 把一个文件中的多个组件合并生成一份示例数据（api说明生成在一个文件中），没有--folder-name的时候，默认文件夹名称是第一个name的下划线表示

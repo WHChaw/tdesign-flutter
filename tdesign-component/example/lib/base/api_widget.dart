@@ -16,7 +16,7 @@ class ApiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: TDText('${model?.text} API', textColor: TDTheme.of(context).whiteColor1,),),
+      appBar: AppBar(title: GMText('${model?.text} API', textColor: GMTheme.of(context).whiteColor1,),),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -69,7 +69,7 @@ class _ApiWidgetState extends State<ApiWidget> {
         } else {
           return  Container(
             alignment: Alignment.topLeft,
-            child: const TDText('加载中…'),
+            child: const GMText('加载中…'),
           );
         }
       },

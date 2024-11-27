@@ -36,7 +36,7 @@ class _CodeWidgetState extends State<CodeWidget> {
       return result!;
     }
     try {
-      var url = 'https://raw.githubusercontent.com/TDesignOteam/tdesign-flutter/main/example/lib/page/td_${widget.codePath}_page.dart';
+      var url = 'https://raw.githubusercontent.com/tdesignOteam/tdesign-flutter/main/example/lib/page/gm_${widget.codePath}_page.dart';
 
       print('getCodeData url:$url');
       var resp = await http.get(Uri.parse(url));
@@ -60,17 +60,17 @@ class _CodeWidgetState extends State<CodeWidget> {
                 children: [
                   Container(
                     height: 36,
-                    color: TDTheme.of(context).brandColor1,
+                    color: GMTheme.of(context).brandColor1,
                     child: Row(
                       children: [
                         GestureDetector(
-                          child: const Icon(TDIcons.file_copy),
+                          child: const Icon(GMIcons.file_copy),
                           onTap: () {
                             if (result != null) {
                               Clipboard.setData(ClipboardData(text: result!));
-                              TDToast.showText('复制成功', context: context);
+                              GMToast.showText('复制成功', context: context);
                             } else {
-                              TDToast.showText('复制失败', context: context);
+                              GMToast.showText('复制失败', context: context);
                             }
                           },
                         ),
@@ -101,7 +101,7 @@ ${snapshot.data}
             } else {
               return Container(
                 alignment: Alignment.topLeft,
-                child: const TDText('加载中…'),
+                child: const GMText('加载中…'),
               );
             }
           },

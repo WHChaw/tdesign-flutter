@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tdesign_flutter/tdesign_flutter.dart';
 
 /// 国际化资源代理
-class IntlResourceDelegate extends TDResourceDelegate {
+class IntlResourceDelegate extends GMResourceDelegate {
   IntlResourceDelegate(this.context);
 
   BuildContext context;

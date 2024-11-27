@@ -6,7 +6,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:tdesign_flutter/tdesign_flutter.dart';
 
-import '../page/td_theme_page.dart';
+import '../page/gm_theme_page.dart';
 import '../web/syntax_highlighter.dart';
 import 'api_widget.dart';
 import 'example_base.dart';
@@ -98,7 +98,7 @@ class _ExamplePageState extends State<ExamplePage> {
     return Scaffold(
         floatingActionButton: widget.floatingActionButton,
         backgroundColor:
-            widget.backgroundColor ?? TDTheme.of(context).grayColor1,
+            widget.backgroundColor ?? GMTheme.of(context).grayColor1,
         body: ScrollbarTheme(
             data: ScrollbarThemeData(
                 trackVisibility: MaterialStateProperty.all(true)),
@@ -128,9 +128,9 @@ class _ExamplePageState extends State<ExamplePage> {
                               margin: const EdgeInsets.only(top: 24),
                               child: Column(
                                 children: [
-                                  TDButton(
+                                  GMButton(
                                     text: '生成Web使用md',
-                                    type: TDButtonType.fill,
+                                    type: GMButtonType.fill,
                                     onTap: () => WebMdTool.generateWebMd(
                                         model: model,
                                         description: widget.desc,
@@ -144,9 +144,9 @@ class _ExamplePageState extends State<ExamplePage> {
                                             ? widget.singleChild
                                             : null),
                                   ),
-                                  TDButton(
+                                  GMButton(
                                     text: '返回首页',
-                                    type: TDButtonType.fill,
+                                    type: GMButtonType.fill,
                                     onTap: () => Navigator.of(context).maybePop(),
                                   ),
                                 ],
@@ -185,9 +185,9 @@ class _ExamplePageState extends State<ExamplePage> {
               bottom: 0,
               child: Column(
                 children: [
-                  TDButton(
+                  GMButton(
                     text: '生成Web使用md',
-                    type: TDButtonType.fill,
+                    type: GMButtonType.fill,
                     onTap: () => WebMdTool.generateWebMd(
                         model: model,
                         description: widget.desc,
@@ -197,9 +197,9 @@ class _ExamplePageState extends State<ExamplePage> {
                         singleChild:
                         widget.showSingleChild ? widget.singleChild : null),
                   ),
-                  TDButton(
+                  GMButton(
                     text: '返回首页',
-                    type: TDButtonType.fill,
+                    type: GMButtonType.fill,
                     onTap: () => Navigator.of(context).maybePop(),
                   ),
                 ],
@@ -213,24 +213,24 @@ class _ExamplePageState extends State<ExamplePage> {
   ExampleItem _buildTestExampleItem() =>
       ExampleItem(desc: '''未在示例稿中体现，但有必要验证的组件样式，请添加到'test'参数中。以下情景必须有测试：
   1.参数为数字。需测试数字为负数、0、较大数值的场景。
-  2.参数为枚举，需测试所有枚举组合（示例已有的可不写）''', builder: (_) => const TDDivider());
+  2.参数为枚举，需测试所有枚举组合（示例已有的可不写）''', builder: (_) => const GMDivider());
 
   Widget _buildNavBar() {
-    var rightBarItems = <TDNavBarItem>[];
+    var rightBarItems = <GMNavBarItem>[];
 
     // web端示例页不展示标题栏
     if (PlatformUtil.isWeb && !Navigator.canPop(context)) {
       return Container();
     }
     if (showAction && !PlatformUtil.isWeb) {
-      rightBarItems.add(TDNavBarItem(
-          icon: TDIcons.info_circle,
+      rightBarItems.add(GMNavBarItem(
+          icon: GMIcons.info_circle,
           action: () {
-            Navigator.pushNamed(context, TDExampleRoute.getApiPath(model));
+            Navigator.pushNamed(context, GMExampleRoute.getApiPath(model));
           }));
       if (!PlatformUtil.isWeb) {
-        rightBarItems.add(TDNavBarItem(
-            icon: TDIcons.code,
+        rightBarItems.add(GMNavBarItem(
+            icon: GMIcons.code,
             action: () {
               setState(() {
                 apiVisible = !apiVisible;
@@ -243,7 +243,7 @@ class _ExamplePageState extends State<ExamplePage> {
             }));
       }
     }
-    return TDNavBar(
+    return GMNavBar(
       key: navBarkey,
       title: widget.title,
       rightBarItems: rightBarItems,
@@ -263,20 +263,20 @@ class _ExamplePageState extends State<ExamplePage> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if(WebMdTool.needGenerateWebMd) const TDText('WebGenTag'),
-          TDText(
+          if(WebMdTool.needGenerateWebMd) const GMText('WebGenTag'),
+          GMText(
             widget.title,
-            font: TDTheme.of(context).fontHeadlineSmall,
-            textColor: TDTheme.of(context).fontGyColor1,
+            font: GMTheme.of(context).fontHeadlineSmall,
+            textColor: GMTheme.of(context).fontGyColor1,
           ),
           Container(
             margin: const EdgeInsets.only(
               top: 4,
             ),
-            child: TDText(
+            child: GMText(
               widget.desc,
-              font: TDTheme.of(context).fontBodyMedium,
-              textColor: TDTheme.of(context).fontGyColor2,
+              font: GMTheme.of(context).fontBodyMedium,
+              textColor: GMTheme.of(context).fontGyColor2,
             ),
           ),
           // Expanded(child: ),
@@ -292,10 +292,10 @@ class _ExamplePageState extends State<ExamplePage> {
       children: [
         Container(
           margin: const EdgeInsets.only(left: 16, right: 16, top: 32),
-          child: TDText(
+          child: GMText(
             '${index < 10 ? "0$index" : index} ${data.title}',
-            font: TDTheme.of(context).fontTitleLarge,
-            textColor: TDTheme.of(context).fontGyColor1,
+            font: GMTheme.of(context).fontTitleLarge,
+            textColor: GMTheme.of(context).fontGyColor1,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -424,10 +424,10 @@ class _ExampleItemWidgetState extends State<ExampleItemWidget> {
                     right: 16,
                     top: widget.index == 0 ? 8 : 24,
                     bottom: 16),
-                child: TDText(
+                child: GMText(
                   widget.data.desc,
-                  font: TDTheme.of(context).fontBodyMedium,
-                  textColor: TDTheme.of(context).fontGyColor2,
+                  font: GMTheme.of(context).fontBodyMedium,
+                  textColor: GMTheme.of(context).fontGyColor2,
                 ),
               ),
         child
@@ -527,9 +527,9 @@ class _CodeWrapperState extends State<CodeWrapper> {
                 child: Container(
                   color: Colors.black.withOpacity(0.4),
                   alignment: Alignment.center,
-                  child: TDText(
+                  child: GMText(
                     'code',
-                    textColor: TDTheme.of(context).whiteColor1,
+                    textColor: GMTheme.of(context).whiteColor1,
                   ),
                 ),
               ))
@@ -573,12 +573,12 @@ class _CodeWrapperState extends State<CodeWrapper> {
             return Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: TDTheme.of(context).grayColor1,
+                  color: GMTheme.of(context).grayColor1,
                   borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(TDTheme.of(context).radiusDefault))),
+                      top: Radius.circular(GMTheme.of(context).radiusDefault))),
               height: 500,
               child:
-                  TDText(PlatformUtil.isWeb ? 'web不支持演示代码，请在移动端查看' : '暂无演示代码'),
+                  GMText(PlatformUtil.isWeb ? 'web不支持演示代码，请在移动端查看' : '暂无演示代码'),
             );
           }
 
@@ -594,9 +594,9 @@ ${codeString}
           return Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: TDTheme.of(context).grayColor1,
+                color: GMTheme.of(context).grayColor1,
                 borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(TDTheme.of(context).radiusDefault))),
+                    top: Radius.circular(GMTheme.of(context).radiusDefault))),
             height: height,
             child: Markdown(
               physics: const BouncingScrollPhysics(),
@@ -629,7 +629,7 @@ ${codeString}
 }
 
 /// State获取标题的扩展
-extension TDStateExs on State {
+extension GMStateExs on State {
   String tdTitle() {
     var modelTheme =
         context.dependOnInheritedWidgetOfExactType<ExamplePageInheritedTheme>();
@@ -638,7 +638,7 @@ extension TDStateExs on State {
 }
 
 /// StatelessWidget获取标题的扩展
-extension TDWidgetExs on StatelessWidget {
+extension GMWidgetExs on StatelessWidget {
   String tdTitle(BuildContext context) {
     var modelTheme =
         context.dependOnInheritedWidgetOfExactType<ExamplePageInheritedTheme>();

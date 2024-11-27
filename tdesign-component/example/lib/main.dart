@@ -35,19 +35,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late TDThemeData _themeData;
+  late GMThemeData _themeData;
   Locale? locale = const Locale('zh');
 
   @override
   void initState() {
     super.initState();
-    _themeData = TDThemeData.defaultData();
+    _themeData = GMThemeData.defaultData();
   }
 
   @override
   Widget build(BuildContext context) {
     // 使用多套主题
-    TDTheme.needMultiTheme();
+    GMTheme.needMultiTheme();
     // 适配3.16的字体居中前,先禁用字体居中功能
     // kTextForceVerticalCenterEnable = false;
     var delegate = IntlResourceDelegate(context);
@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
       home: PlatformUtil.isWeb ? null : Builder(
         builder: (context) {
           // 设置文案代理,国际化需要在MaterialApp初始化完成之后才生效,而且需要每次更新context
-          TDTheme.setResourceBuilder((context) => delegate..updateContext(context), needAlwaysBuild: true);
+          GMTheme.setResourceBuilder((context) => delegate..updateContext(context), needAlwaysBuild: true);
           return MyHomePage(
             title: AppLocalizations.of(context)?.components ?? '',
             locale: locale,
@@ -78,7 +78,7 @@ class _MyAppState extends State<MyApp> {
       locale: locale,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      onGenerateRoute: TDExampleRoute.onGenerateRoute,
+      onGenerateRoute: GMExampleRoute.onGenerateRoute,
       routes: _getRoutes(),
     );
   }

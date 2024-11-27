@@ -12,7 +12,7 @@ import 'web/web.dart' if (dart.library.io) 'web/web_replace.dart' as web;
 var _kShowTodoComponent = false;
 
 /// 切换主题的回调
-typedef OnThemeChange = Function(TDThemeData themeData);
+typedef OnThemeChange = Function(GMThemeData themeData);
 
 /// 切换语言的回调
 typedef OnLocaleChange = Function(Locale locale);
@@ -39,8 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    TDExampleRoute.init();
-    sideBarExamplePage.forEach(TDExampleRoute.add);
+    GMExampleRoute.init();
+    sideBarExamplePage.forEach(GMExampleRoute.add);
   }
 
   @override
@@ -56,8 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        backgroundColor: TDTheme.of(context).brandNormalColor,
-        titleTextStyle: TextStyle(color:TDTheme.of(context).whiteColor1, fontSize: TDTheme.of(context).fontTitleLarge?.size),
+        backgroundColor: GMTheme.of(context).brandNormalColor,
+        titleTextStyle: TextStyle(color:GMTheme.of(context).whiteColor1, fontSize: GMTheme.of(context).fontTitleLarge?.size),
         title: Text(widget.title),
         actions: ScreenUtil.isWebLargeScreen(context)
             ? null
@@ -69,9 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.only(
                 right: 16,
               ),
-              child: TDText(
+              child: GMText(
                 widget.locale?.languageCode == 'en' ? '中文' : 'English',
-                textColor: TDTheme.of(context).whiteColor1,
+                textColor: GMTheme.of(context).whiteColor1,
               ),
             ),
             onTap: () {
@@ -88,13 +88,13 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.only(
                 right: 16,
               ),
-              child: TDText(
+              child: GMText(
                 AppLocalizations.of(context)?.about,
-                textColor: TDTheme.of(context).whiteColor1,
+                textColor: GMTheme.of(context).whiteColor1,
               ),
             ),
             onTap: () {
-              Navigator.pushNamed(context, TDExampleRoute.aboutPath);
+              Navigator.pushNamed(context, GMExampleRoute.aboutPath);
             },
           )
         ],
@@ -127,34 +127,34 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          TDTheme(
-              data: TDThemeData.defaultData(),
-              child: TDButton(
+          GMTheme(
+              data: GMThemeData.defaultData(),
+              child: GMButton(
                 text: AppLocalizations.of(context)?.defaultTheme,
-                theme: TDButtonTheme.primary,
+                theme: GMButtonTheme.primary,
                 onTap: () {
-                  widget.onThemeChange?.call(TDTheme.defaultData());
+                  widget.onThemeChange?.call(GMTheme.defaultData());
                 },
               )),
-          TDTheme(
-              data: TDThemeData.fromJson('green', greenThemeConfig) ?? TDThemeData.defaultData(),
-              child: TDButton(
+          GMTheme(
+              data: GMThemeData.fromJson('green', greenThemeConfig) ?? GMThemeData.defaultData(),
+              child: GMButton(
                   text: AppLocalizations.of(context)?.greenTheme,
-                  theme: TDButtonTheme.primary,
+                  theme: GMButtonTheme.primary,
                   onTap: () async {
                     var jsonString = await rootBundle.loadString('assets/theme.json');
-                    var newData = TDThemeData.fromJson('green', jsonString);
-                    widget.onThemeChange?.call(newData ?? TDTheme.defaultData());
+                    var newData = GMThemeData.fromJson('green', jsonString);
+                    widget.onThemeChange?.call(newData ?? GMTheme.defaultData());
                   })),
-          TDTheme(
-              data: TDThemeData.fromJson('red', greenThemeConfig) ?? TDThemeData.defaultData(),
-              child: TDButton(
+          GMTheme(
+              data: GMThemeData.fromJson('red', greenThemeConfig) ?? GMThemeData.defaultData(),
+              child: GMButton(
                   text: AppLocalizations.of(context)?.redTheme,
-                  theme: TDButtonTheme.danger,
+                  theme: GMButtonTheme.danger,
                   onTap: () async {
                     var jsonString = await rootBundle.loadString('assets/theme.json');
-                    var newData = TDThemeData.fromJson('red', jsonString);
-                    widget.onThemeChange?.call(newData ?? TDTheme.defaultData());
+                    var newData = GMThemeData.fromJson('red', jsonString);
+                    widget.onThemeChange?.call(newData ?? GMTheme.defaultData());
                   })),
         ],
       ),
@@ -166,11 +166,11 @@ class _MyHomePageState extends State<MyHomePage> {
         margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
         padding: const EdgeInsets.only(left: 12),
         decoration: BoxDecoration(
-            color: TDTheme.of(context).brandHoverColor,
-            borderRadius: BorderRadius.only(topRight: Radius.circular(TDTheme.of(context).radiusLarge))),
-        child: TDText(
+            color: GMTheme.of(context).brandHoverColor,
+            borderRadius: BorderRadius.only(topRight: Radius.circular(GMTheme.of(context).radiusLarge))),
+        child: GMText(
           key,
-          textColor: TDTheme.of(context).whiteColor1,
+          textColor: GMTheme.of(context).whiteColor1,
         ),
       ));
       value.forEach((model) {
@@ -179,12 +179,12 @@ class _MyHomePageState extends State<MyHomePage> {
           if (_kShowTodoComponent) {
             children.add(Padding(
               padding: const EdgeInsets.only(left: 40, right: 40, top: 8, bottom: 8),
-              child: TDButton(
-                  size: TDButtonSize.medium,
-                  type: TDButtonType.outline,
-                  shape: TDButtonShape.filled,
-                  theme: TDButtonTheme.defaultTheme,
-                  textStyle: TextStyle(color: TDTheme.of(context).fontGyColor4),
+              child: GMButton(
+                  size: GMButtonSize.medium,
+                  type: GMButtonType.outline,
+                  shape: GMButtonShape.filled,
+                  theme: GMButtonTheme.defaultTheme,
+                  textStyle: TextStyle(color: GMTheme.of(context).fontGyColor4),
                   onTap: () {
                     Navigator.pushNamed(context, '${model.name}?showAction=1');
                   },
@@ -194,11 +194,11 @@ class _MyHomePageState extends State<MyHomePage> {
         } else {
           children.add(Padding(
             padding: const EdgeInsets.only(left: 40, right: 40, top: 8, bottom: 8),
-            child: TDButton(
-                size: TDButtonSize.medium,
-                type: TDButtonType.outline,
-                shape: TDButtonShape.filled,
-                theme: TDButtonTheme.primary,
+            child: GMButton(
+                size: GMButtonSize.medium,
+                type: GMButtonType.outline,
+                shape: GMButtonShape.filled,
+                theme: GMButtonTheme.primary,
                 onTap: () {
                   Navigator.pushNamed(context, '${model.name}?showAction=1');
                 },

@@ -2,25 +2,25 @@ import 'package:flutter/cupertino.dart';
 
 import '../../tdesign_flutter.dart';
 
-typedef TDTDResourceBuilder = TDResourceDelegate? Function(BuildContext context);
+typedef GMGMResourceBuilder = GMResourceDelegate? Function(BuildContext context);
 
 /// 资源管理器
-class TDResourceManager {
+class GMResourceManager {
   /// 代理构建器
-  TDTDResourceBuilder? _builder;
+  GMGMResourceBuilder? _builder;
 
   /// 每次都调用build方法
   bool _needAlwaysBuild = false;
 
-  TDResourceDelegate? _delegate;
+  GMResourceDelegate? _delegate;
 
   /// 获取资源
-  TDResourceDelegate delegate(BuildContext context) {
+  GMResourceDelegate delegate(BuildContext context) {
     if (_builder == null) {
       return _defaultDelegate;
     }
     if (_needAlwaysBuild) {
-      // 每次都调用,适用于全局有多个TDResourceDelegate的情况
+      // 每次都调用,适用于全局有多个GMResourceDelegate的情况
       var delegate = _builder?.call(context);
       if (delegate != null) {
         return delegate;
@@ -30,11 +30,11 @@ class TDResourceManager {
     return _delegate ?? _defaultDelegate;
   }
 
-  static TDResourceManager? _instance;
+  static GMResourceManager? _instance;
 
   /// 单例对象
-  static TDResourceManager get instance {
-    _instance ??= TDResourceManager();
+  static GMResourceManager get instance {
+    _instance ??= GMResourceManager();
     return _instance!;
   }
 
@@ -42,143 +42,143 @@ class TDResourceManager {
   static final _defaultDelegate = _DefaultResourceDelegate();
 
   /// 设置资源代理
-  void setResourceBuilder(TDTDResourceBuilder delegate, needAlwaysBuild) {
+  void setResourceBuilder(GMGMResourceBuilder delegate, needAlwaysBuild) {
     _builder = delegate;
     _needAlwaysBuild = needAlwaysBuild;
   }
 }
 
 /// 资源管理器,允许外部重写,设计成抽象类,防止有新增字段时,用户没有感知
-abstract class TDResourceDelegate {
-  /// [TDSwitch]的打开状态文案
+abstract class GMResourceDelegate {
+  /// [GMSwitch]的打开状态文案
   String get open;
 
-  /// [TDSwitch]的关闭状态文案
+  /// [GMSwitch]的关闭状态文案
   String get close;
 
-  /// [TDBadge]为0时的默认文案
+  /// [GMBadge]为0时的默认文案
   String get badgeZero;
 
-  /// [TDAlertDialog]等 取消
+  /// [GMAlertDialog]等 取消
   String get cancel;
 
-  /// [TDAlertDialog]等 确认
+  /// [GMAlertDialog]等 确认
   String get confirm;
 
-  /// [TDDropdownMenu] 其他
+  /// [GMDropdownMenu] 其他
   String get other;
 
-  /// [TDDropdownMenu] 重置
+  /// [GMDropdownMenu] 重置
   String get reset;
 
-  /// [TDLoading] 加载中
+  /// [GMLoading] 加载中
   String get loading;
 
-  /// [TDToast] 加载中...
+  /// [GMToast] 加载中...
   String get loadingWithPoint;
 
-  /// [TDConfirmDialog] 知道了
+  /// [GMConfirmDialog] 知道了
   String get knew;
 
-  /// [TDRefreshHeader] 正在刷新
+  /// [GMRefreshHeader] 正在刷新
   String get refreshing;
 
-  /// [TDRefreshHeader] 松开刷新
+  /// [GMRefreshHeader] 松开刷新
   String get releaseRefresh;
 
-  /// [TDTimeCounter] 天
+  /// [GMTimeCounter] 天
   String get days;
 
-  /// [TDTimeCounter] 时
+  /// [GMTimeCounter] 时
   String get hours;
 
-  /// [TDTimeCounter] 分
+  /// [GMTimeCounter] 分
   String get minutes;
 
-  /// [TDTimeCounter] 秒
+  /// [GMTimeCounter] 秒
   String get seconds;
 
-  /// [TDTimeCounter] 毫秒
+  /// [GMTimeCounter] 毫秒
   String get milliseconds;
 
-  /// [TDCalendarHeader] 星期日
+  /// [GMCalendarHeader] 星期日
   String get sunday;
 
-  /// [TDCalendarHeader] 星期一
+  /// [GMCalendarHeader] 星期一
   String get monday;
 
-  /// [TDCalendarHeader] 星期二
+  /// [GMCalendarHeader] 星期二
   String get tuesday;
 
-  /// [TDCalendarHeader] 星期三
+  /// [GMCalendarHeader] 星期三
   String get wednesday;
 
-  /// [TDCalendarHeader] 星期四
+  /// [GMCalendarHeader] 星期四
   String get thursday;
 
-  /// [TDCalendarHeader] 星期五
+  /// [GMCalendarHeader] 星期五
   String get friday;
 
-  /// [TDCalendarHeader] 星期六
+  /// [GMCalendarHeader] 星期六
   String get saturday;
 
-  /// [TDCalendarBody] 年
+  /// [GMCalendarBody] 年
   String get year;
 
-  /// [TDCalendarBody] 一月
+  /// [GMCalendarBody] 一月
   String get january;
 
-  /// [TDCalendarBody] 二月
+  /// [GMCalendarBody] 二月
   String get february;
 
-  /// [TDCalendarBody] 三月
+  /// [GMCalendarBody] 三月
   String get march;
 
-  /// [TDCalendarBody] 四月
+  /// [GMCalendarBody] 四月
   String get april;
 
-  /// [TDCalendarBody] 五月
+  /// [GMCalendarBody] 五月
   String get may;
 
-  /// [TDCalendarBody] 六月
+  /// [GMCalendarBody] 六月
   String get june;
 
-  /// [TDCalendarBody] 七月
+  /// [GMCalendarBody] 七月
   String get july;
 
-  /// [TDCalendarBody] 八月
+  /// [GMCalendarBody] 八月
   String get august;
 
-  /// [TDCalendarBody] 九月
+  /// [GMCalendarBody] 九月
   String get september;
 
-  /// [TDCalendarBody] 十月
+  /// [GMCalendarBody] 十月
   String get october;
 
-  /// [TDCalendarBody] 十一月
+  /// [GMCalendarBody] 十一月
   String get november;
 
-  /// [TDCalendarBody] 十二月
+  /// [GMCalendarBody] 十二月
   String get december;
 
-  /// [TDCalendar] 时间
+  /// [GMCalendar] 时间
   String get time;
 
-  /// [TDCalendar] 开始
+  /// [GMCalendar] 开始
   String get start;
 
-  /// [TDCalendar] 结束
+  /// [GMCalendar] 结束
   String get end;
 
-  /// [TDRate] 未评分
+  /// [GMRate] 未评分
   String get notRated;
 
-  /// [TDRate] 选择选项
+  /// [GMRate] 选择选项
   String get cascadeLabel;
 }
 
 /// 如果用户要重写,就应该全部重写,不开放只重新部分资源
-class _DefaultResourceDelegate extends TDResourceDelegate {
+class _DefaultResourceDelegate extends GMResourceDelegate {
   @override
   String get open => '开';
 

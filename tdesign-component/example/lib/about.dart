@@ -30,8 +30,8 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: TDTheme.of(context).grayColor1,
-      appBar: AppBar(title: TDText('关于我们', textColor: TDTheme.of(context).whiteColor1,),),
+      backgroundColor: GMTheme.of(context).grayColor1,
+      appBar: AppBar(title: GMText('关于我们', textColor: GMTheme.of(context).whiteColor1,),),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -51,15 +51,15 @@ class _AboutPageState extends State<AboutPage> {
         Color? onColor,
         Color? offColor,
       }) {
-    final theme = TDTheme.of(context);
+    final theme = GMTheme.of(context);
     Widget current = Row(
       children: [
         Expanded(
-            child: TDText(
+            child: GMText(
               title,
               textColor: theme.fontGyColor1,
             )),
-        TDText(
+        GMText(
           desc ?? '',
           textColor: theme.grayColor6,
           forceVerticalCenter: true,
@@ -67,7 +67,7 @@ class _AboutPageState extends State<AboutPage> {
       ],
     );
     current = Container(
-      color: TDTheme.of(context).whiteColor1,
+      color: GMTheme.of(context).whiteColor1,
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 1, top: 1),
       child: current,
       height: 44,

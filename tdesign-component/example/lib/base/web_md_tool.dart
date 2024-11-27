@@ -23,7 +23,7 @@ class WebMdTool {
     required CodeWrapper? singleChild,
   }) async {
     if (needGenerateWebMd && model != null && !kIsWeb) {
-      var pageName = 'td_${model.pageName ?? model.name}_page';
+      var pageName = 'GM${model.pageName ?? model.name}_page';
       var exampleCodeSb = StringBuffer();
       var count = 1;
       if (singleChild != null) {
@@ -260,15 +260,15 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';''';
   static _getPageCode(String pageName) {
     if(pageName == 'td_side-bar_page'){
       return '''
-[td_sidebar_page.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/td_sidebar_page.dart)
+[gm_sidebar_page.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/gm_sidebar_page.dart)
 
-[td_sidebar_page_anchor.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/td_sidebar_page_anchor.dart)
+[gm_sidebar_page_anchor.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/gm_sidebar_page_anchor.dart)
 
-[td_sidebar_page_custom.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/td_sidebar_page_custom.dart)
+[gm_sidebar_page_custom.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/gm_sidebar_page_custom.dart)
 
-[td_sidebar_page_icon.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/td_sidebar_page_icon.dart)
+[gm_sidebar_page_icon.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/gm_sidebar_page_icon.dart)
 
-[td_sidebar_page_pagination.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/td_sidebar_page_pagination.dart)''';
+[gm_sidebar_page_pagination.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/sidebar/gm_sidebar_page_pagination.dart)''';
     }
     return '[$pageName.dart](https://github.com/Tencent/tdesign-flutter/blob/main/tdesign-component/example/lib/page/$pageName.dart)';
   }
