@@ -19,7 +19,13 @@ typedef OnLocaleChange = Function(Locale locale);
 
 /// 示例首页
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title, this.onThemeChange, this.locale, this.onLocaleChange,}) : super(key: key);
+  const MyHomePage({
+    Key? key,
+    required this.title,
+    this.onThemeChange,
+    this.locale,
+    this.onLocaleChange,
+  }) : super(key: key);
 
   final String title;
 
@@ -57,47 +63,48 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         backgroundColor: GMTheme.of(context).brandNormalColor,
-        titleTextStyle: TextStyle(color:GMTheme.of(context).whiteColor1, fontSize: GMTheme.of(context).fontTitleLarge?.size),
+        titleTextStyle: TextStyle(
+            color: GMTheme.of(context).whiteColor1,
+            fontSize: GMTheme.of(context).fontTitleLarge?.size),
         title: Text(widget.title),
         actions: ScreenUtil.isWebLargeScreen(context)
             ? null
             : [
-
-          GestureDetector(
-            child: Container(
-              alignment: Alignment.centerRight,
-              padding: const EdgeInsets.only(
-                right: 16,
-              ),
-              child: GMText(
-                widget.locale?.languageCode == 'en' ? '中文' : 'English',
-                textColor: GMTheme.of(context).whiteColor1,
-              ),
-            ),
-            onTap: () {
-              if(widget.locale?.languageCode == 'en') {
-                widget.onLocaleChange?.call(const Locale('zh'));
-              } else {
-                widget.onLocaleChange?.call(const Locale('en'));
-              }
-            },
-          ),
-          GestureDetector(
-            child: Container(
-              alignment: Alignment.centerRight,
-              padding: const EdgeInsets.only(
-                right: 16,
-              ),
-              child: GMText(
-                AppLocalizations.of(context)?.about,
-                textColor: GMTheme.of(context).whiteColor1,
-              ),
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, GMExampleRoute.aboutPath);
-            },
-          )
-        ],
+                GestureDetector(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.only(
+                      right: 16,
+                    ),
+                    child: GMText(
+                      widget.locale?.languageCode == 'en' ? '中文' : 'English',
+                      textColor: GMTheme.of(context).whiteColor1,
+                    ),
+                  ),
+                  onTap: () {
+                    if (widget.locale?.languageCode == 'en') {
+                      widget.onLocaleChange?.call(const Locale('zh'));
+                    } else {
+                      widget.onLocaleChange?.call(const Locale('en'));
+                    }
+                  },
+                ),
+                GestureDetector(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.only(
+                      right: 16,
+                    ),
+                    child: GMText(
+                      AppLocalizations.of(context)?.about,
+                      textColor: GMTheme.of(context).whiteColor1,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, GMExampleRoute.aboutPath);
+                  },
+                )
+              ],
       ),
       body: _buildBody(context),
     );
@@ -137,24 +144,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               )),
           GMTheme(
-              data: GMThemeData.fromJson('green', greenThemeConfig) ?? GMThemeData.defaultData(),
+              data: GMThemeData.fromJson('green', greenThemeConfig) ??
+                  GMThemeData.defaultData(),
               child: GMButton(
                   text: AppLocalizations.of(context)?.greenTheme,
                   theme: GMButtonTheme.primary,
                   onTap: () async {
-                    var jsonString = await rootBundle.loadString('assets/theme.json');
-                    var newData = GMThemeData.fromJson('green', jsonString);
-                    widget.onThemeChange?.call(newData ?? GMTheme.defaultData());
+
+                    widget.onThemeChange?.call(await GMTheme.loadThemeData('black'));
                   })),
           GMTheme(
-              data: GMThemeData.fromJson('red', greenThemeConfig) ?? GMThemeData.defaultData(),
+              data: GMThemeData.fromJson('red', greenThemeConfig) ??
+                  GMThemeData.defaultData(),
               child: GMButton(
                   text: AppLocalizations.of(context)?.redTheme,
                   theme: GMButtonTheme.danger,
                   onTap: () async {
-                    var jsonString = await rootBundle.loadString('assets/theme.json');
-                    var newData = GMThemeData.fromJson('red', jsonString);
-                    widget.onThemeChange?.call(newData ?? GMTheme.defaultData());
+                     widget.onThemeChange?.call(await GMTheme.loadThemeData('purple'));
                   })),
         ],
       ),
@@ -167,7 +173,8 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.only(left: 12),
         decoration: BoxDecoration(
             color: GMTheme.of(context).brandHoverColor,
-            borderRadius: BorderRadius.only(topRight: Radius.circular(GMTheme.of(context).radiusLarge))),
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(GMTheme.of(context).radiusLarge))),
         child: GMText(
           key,
           textColor: GMTheme.of(context).whiteColor1,
@@ -178,7 +185,8 @@ class _MyHomePageState extends State<MyHomePage> {
         if (model.isTodo) {
           if (_kShowTodoComponent) {
             children.add(Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40, top: 8, bottom: 8),
+              padding:
+                  const EdgeInsets.only(left: 40, right: 40, top: 8, bottom: 8),
               child: GMButton(
                   size: GMButtonSize.medium,
                   type: GMButtonType.outline,
@@ -193,7 +201,8 @@ class _MyHomePageState extends State<MyHomePage> {
           }
         } else {
           children.add(Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40, top: 8, bottom: 8),
+            padding:
+                const EdgeInsets.only(left: 40, right: 40, top: 8, bottom: 8),
             child: GMButton(
                 size: GMButtonSize.medium,
                 type: GMButtonType.outline,
@@ -210,7 +219,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return children;
   }
 }
-
 
 String greenThemeConfig = '''
   {

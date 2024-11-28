@@ -1,20 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-// void main() {
-//   final currentDirectory = Directory.current;
-//   print('当前运行文件所在的路径：${currentDirectory.path}');
-//   var basePath = '${currentDirectory.path}/shell/theme/';
-//   final greenFilePath = '${basePath}green.css';
-//   final redFilePath = '${basePath}red.css';
-//   // final jsonFilePath = '${basePath}cssTheme.json';
-//   final themeFilePath = '${currentDirectory.path}/assets/theme.json';
-
-//   genThemeJson(items: [
-//     ThemeItem(name: 'green', cssPath: greenFilePath),
-//     ThemeItem(name: 'red', cssPath: redFilePath),
-//   ], output: themeFilePath);
-// }
+import 'package:flutter/services.dart';
 
 class ThemeItem {
   String name;
@@ -23,28 +10,28 @@ class ThemeItem {
   ThemeItem({required this.name, required this.cssPath});
 }
 
-void genThemeJson({required List<ThemeItem> items, required String output}) {
+Future<void> genThemeJson({required List<ThemeItem> items, required String output}) async {
   var outputMap = {};
   final outputFile = File(output);
   for (var item in items) {
+    var cssContent;
     final cssFile = File(item.cssPath);
     // final jsonFile = File(jsonFilePath);
     print('cssFilePath：${item.cssPath}');
     // print('jsonFilePath：${jsonFilePath}');
 
-    if (!cssFile.existsSync()) {
-      print('CSS file does not exist.');
-      return;
+    if (cssFile.existsSync()) {
+      cssContent = await cssFile.readAsString();
+    } else {
+      cssContent = await rootBundle.loadString(item.cssPath);
     }
-
-    var cssContent = cssFile.readAsStringSync();
 
     // 过滤深色模式的配置
     cssContent = cssContent.split("[theme-mode=\"dark\"]")[0];
 
     final jsonMap = convertCssToJson(cssContent);
 
-    var filterMap = <String,String>{};
+    var filterMap = <String, String>{};
     var colorKeys = <String>['brand', 'warning', 'error', 'success', 'gray'];
     jsonMap.forEach((key, value) {
       for (var element in colorKeys) {
@@ -57,9 +44,14 @@ void genThemeJson({required List<ThemeItem> items, required String output}) {
       }
     });
 
-    var functionNames = ['Light','Focus','Disabled','Hover','Active'];
-    var defaultNames = ['brandColor','warningColor','errorColor','successColor'];
-    var refMap = <String, String> {};
+    var functionNames = ['Light', 'Focus', 'Disabled', 'Hover', 'Active'];
+    var defaultNames = [
+      'brandColor',
+      'warningColor',
+      'errorColor',
+      'successColor'
+    ];
+    var refMap = <String, String>{};
     var removeKey = [];
     filterMap.forEach((key, value) {
       if (value.contains('var(')) {
@@ -73,8 +65,8 @@ void genThemeJson({required List<ThemeItem> items, required String output}) {
             return;
           }
         }
-        for (var d in defaultNames){
-          if(key == d){
+        for (var d in defaultNames) {
+          if (key == d) {
             // 替换brandColor格式命名为brandNormalColor
             var reKey = key.replaceAll('Color', 'NormalColor');
             refMap[reKey] = convertToCamelCase(field);
@@ -87,7 +79,7 @@ void genThemeJson({required List<ThemeItem> items, required String output}) {
       }
     });
     // 清除已处理的Key
-    removeKey.forEach((key){
+    removeKey.forEach((key) {
       filterMap.remove(key);
     });
     var themeMap = {};

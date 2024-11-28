@@ -9,8 +9,21 @@ import 'base/intl_resource_delegate.dart';
 import 'config.dart';
 import 'home.dart';
 
-void main() {
+void main() async {
   Log.setCustomLogPrinter((level, tag, msg) => print('[$level] $tag ==> $msg'));
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //如果app版本有更新，执行unregisterTheme
+  var isNewAppVersion = true;
+  if (isNewAppVersion) {
+    await GMTheme.unregisterTheme();
+  }
+  await GMTheme.registerTheme([
+    ThemeItem(name: 'black', cssPath: 'assets/theme_black.css'),
+    ThemeItem(name: 'purple', cssPath: 'assets/theme_purple.css'),
+  ]);
+
   runApp(const MyApp());
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -35,7 +48,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late GMThemeData _themeData;
+  GMThemeData _themeData = GMTheme.defaultData();
   Locale? locale = const Locale('zh');
 
   @override
@@ -52,28 +65,31 @@ class _MyAppState extends State<MyApp> {
     // kTextForceVerticalCenterEnable = false;
     var delegate = IntlResourceDelegate(context);
     return MaterialApp(
-      title: 'TDesign Flutter Example',
+      title: 'GMDesign Flutter Example',
+      // theme: ThemeData(extensions: [_themeData], colorScheme: ColorScheme.light(primary: _themeData.brandNormalColor)),
       theme: ThemeData(extensions: [_themeData], colorScheme: ColorScheme.light(primary: _themeData.brandNormalColor)),
-      home: PlatformUtil.isWeb ? null : Builder(
-        builder: (context) {
-          // 设置文案代理,国际化需要在MaterialApp初始化完成之后才生效,而且需要每次更新context
-          GMTheme.setResourceBuilder((context) => delegate..updateContext(context), needAlwaysBuild: true);
-          return MyHomePage(
-            title: AppLocalizations.of(context)?.components ?? '',
-            locale: locale,
-            onLocaleChange: (locale){
-              setState(() {
-                this.locale = locale;
-              });
-            },
-            onThemeChange: (themeData) {
-              setState(() {
-                _themeData = themeData;
-              });
-            },
-          );
-        },
-      ),
+      home: PlatformUtil.isWeb
+          ? null
+          : Builder(
+              builder: (context) {
+                // 设置文案代理,国际化需要在MaterialApp初始化完成之后才生效,而且需要每次更新context
+                GMTheme.setResourceBuilder((context) => delegate..updateContext(context), needAlwaysBuild: true);
+                return MyHomePage(
+                  title: AppLocalizations.of(context)?.components ?? '',
+                  locale: locale,
+                  onLocaleChange: (locale) {
+                    setState(() {
+                      this.locale = locale;
+                    });
+                  },
+                  onThemeChange: (themeData) {
+                    setState(() {
+                      _themeData = themeData;
+                    });
+                  },
+                );
+              },
+            ),
       // 设置国际化处理
       locale: locale,
       supportedLocales: AppLocalizations.supportedLocales,

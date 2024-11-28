@@ -108,3 +108,5 @@ flutter:
     - assets/version
     - assets/img/
     - assets/theme.json
+    - assets/theme_black.css
+    - assets/theme_purple.css
